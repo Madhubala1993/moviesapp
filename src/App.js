@@ -4,6 +4,8 @@ import "./index.css";
 import { Counter } from "./Counter";
 import { MovieList } from "./MovieList";
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 
 export default function App() {
   const Initial_Movies = [
@@ -105,26 +107,22 @@ export default function App() {
         <p className="heading">Movies List and Ratings</p>
       </div>
       <div className="add-movie-form">
-      <input
-        value={name}
-        placeholder="Enter a name"
-        onChange={(event) => setName(event.target.value)}
+      <TextField id="standard-basic" label="Enter movie name" variant="standard" 
+      value = {name}
+      onChange={(event) => setName(event.target.value)}
       />
-      <input
-        value={poster}
-        placeholder="Enter a poster"
-        onChange={(event) => setPoster(event.target.value)}
+      <TextField id="standard-basic" label="Enter movie URL" variant="standard" 
+      value={poster}
+      onChange={(event) => setPoster(event.target.value)}/>
+      <TextField id="standard-basic" label="Enter movie rating" variant="standard"
+      value={rating}
+      onChange={(event) => setRating(event.target.value)}
       />
-      <input
-        value={rating}
-        placeholder="Enter a rating"
-        onChange={(event) => setRating(event.target.value)}
-      />
-      <input
-        value={summary}
-        placeholder="Enter a summary"
+      <TextField id="standard-basic" label="Enter movie summary" variant="standard" 
+      value={summary}
         onChange={(event) => setSummary(event.target.value)}
-      />
+        />
+      
       <Button variant="outlined" onClick={() => {
         const newMovie = {
           name, 

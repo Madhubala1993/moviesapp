@@ -1,25 +1,37 @@
 import { useState } from "react/cjs/react.development";
 import { Counter } from "./Counter";
-import Button from '@mui/material/Button';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import IconButton from '@mui/material/IconButton';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 export function Movies({ deleteButton, name, poster, rating, summary }, index) {
-  const [toggle, setToggle] = useState(true);
+  const styles = rating >= 8.5 ? { color: "green" } : { color: "Red" };
+  const [toggle, setToggle] = useState(false);
   return (
-    <div className="container">
+    <Card  className="container">
       <img className="poster" src={poster} alt={name}></img>
+      <CardContent>
       <div className="movie-spec">
-        <p>{name}</p>
-        <p> ⭐️ {rating}</p>
+        <p>{name}<IconButton 
+          onClick={() => {
+            setToggle(!toggle);
+          }}
+          color="primary" 
+          aria-label="add to shopping cart">
+            {toggle ? <ExpandLessIcon/> : <ExpandMoreIcon/> }
+      </IconButton></p>
+        <p style={styles}> ⭐️ {rating}</p>
       </div>
-      <Button variant="outlined" onClick={() => {
-          setToggle(!toggle);
-        }}
-        >Toggle description</Button>
+          
       {toggle ? <p className="movie-summary">  {summary}</p> : <p></p>}
-      <div className="movie-actions">
+      <CardActions>
       <Counter />
       {deleteButton} 
-      </div>
-    </div>
+      </CardActions>
+      </CardContent>
+    </Card>
   );
 }
