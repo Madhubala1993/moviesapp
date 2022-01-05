@@ -41,3 +41,12 @@ body{
   gap: 0.5rem;
   justify-items: center;
 }
+
+.counter-container{
+  display: flex;
+  gap:20px;
+}
+
+.counter-container > button  {
+ font-size: 1.2rem;
+}
