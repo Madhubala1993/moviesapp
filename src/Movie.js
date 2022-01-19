@@ -10,7 +10,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import IconButton from '@mui/material/IconButton';
 import { useHistory } from "react-router-dom";
 
-export function Movie({deleteButton, name, poster, rating, summary, id }) {
+
+export function Movie({deleteButton, editButton, name, poster, rating, summary, id }) {
   const [show, setShow] = useState(false);
   const styles = rating > 8 ? { color: "Green" } : { color: "crimson" };
   const history = useHistory();
@@ -37,6 +38,9 @@ export function Movie({deleteButton, name, poster, rating, summary, id }) {
       <CardActions>
       <Counter />
       {deleteButton}
+      {editButton}
+
+      
       </CardActions>
 
     </Card>

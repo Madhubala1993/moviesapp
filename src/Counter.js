@@ -18,7 +18,6 @@ export function Counter() {
       onClick={() => setDislike(dislike + 1)}>
         <Badge badgeContent={(dislike)} color="error">👎</Badge>
         </IconButton>
-      {/* <button onClick={() => setDislike(dislike + 1)}>👎 {dislike}</button> */}
     </div>
   );
 }
