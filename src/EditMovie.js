@@ -31,10 +31,10 @@ const formValidationSchema = yup.object({
 });
 
 export function EditMovie() {
-  const { name } = useParams();
+  const { id } = useParams();
   const [movie, setMovieList] = useState(null);
   const getMovie = () => {
-    fetch(`${API}/movies?name=${name}`, {
+    fetch(`${API}/movies/${id}`, {
       method: "GET",
     })
       .then((data) => data.json())
@@ -45,25 +45,25 @@ export function EditMovie() {
   // const { id } = useParams();
 
   const history = useHistory();
-
+  // console.log(movie);
   return movie ? <UpdateMovie movie={movie} /> : <h1>Loading...</h1>;
 }
 
 export function UpdateMovie({ movie }) {
-  const [name, setName] = useState(movie[0].name);
-  const [poster, setPoster] = useState(movie[0].poster);
-  const [rating, setRating] = useState(movie[0].rating);
-  const [summary, setSummary] = useState(movie[0].summary);
-  const [trailer, setTrailer] = useState(movie[0].trailer);
+  const [name, setName] = useState(movie.name);
+  const [poster, setPoster] = useState(movie.poster);
+  const [rating, setRating] = useState(movie.rating);
+  const [summary, setSummary] = useState(movie.summary);
+  const [trailer, setTrailer] = useState(movie.trailer);
 
   const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
     useFormik({
       initialValues: {
-        name: movie[0].name,
-        poster: movie[0].poster,
-        rating: movie[0].rating,
-        summary: movie[0].summary,
-        trailer: movie[0].trailer,
+        name: movie.name,
+        poster: movie.poster,
+        rating: movie.rating,
+        summary: movie.summary,
+        trailer: movie.trailer,
       },
       // validate : validateForm,
       validationSchema: formValidationSchema,
@@ -73,23 +73,14 @@ export function UpdateMovie({ movie }) {
     });
 
   const addMovie = (updatedMovie) => {
-    // const updatedMovie = {
-    //   name,
-    //   poster,
-    //   rating,
-    //   summary,
-    //   trailer,
-    // };
-    // setMovieList([...movieList, newMovie]);
-    // history.push("/movies");
-    console.log("updated", updatedMovie);
-    fetch(`${API}/movies/${movie[0].name}`, {
+    // console.log("updated", updatedMovie);
+    fetch(`${API}/movies/${movie._id}`, {
       method: "PUT",
       body: JSON.stringify(updatedMovie),
       headers: { "Content-Type": "application/json" },
     })
       .then((data) => data.json())
-      .then((data) => console.log(data))
+      // .then((data) => console.log(data))
       .then(() => history.push("/movies"));
   };
 

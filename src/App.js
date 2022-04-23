@@ -67,7 +67,7 @@ export default function App() {
               >
                 Tic-Tac-Toe
               </Button>
-              <Button
+              {/* <Button
                 color="inherit"
                 onClick={() => history.push("/basic-form")}
               >
@@ -78,7 +78,7 @@ export default function App() {
                 onClick={() => history.push("/users/login")}
               >
                 Login page
-              </Button>
+              </Button> */}
               <Button
                 sx={{ marginLeft: "auto" }}
                 color="inherit"
@@ -107,7 +107,7 @@ export default function App() {
                 <AddMovie />
               </Route>
 
-              <Route path="/movie/edit/:name">
+              <Route path="/movie/edit/:id">
                 <EditMovie />
               </Route>
 
@@ -123,12 +123,12 @@ export default function App() {
                 <Tictactoe />
               </Route>
 
-              <Route path="/basic-form">
+              {/* <Route path="/basic-form">
                 <BasicForm />
               </Route>
               <Route path="/users/login">
                 <Loginpage />
-              </Route>
+              </Route> */}
 
               <Route path="**">
                 <NotFound />

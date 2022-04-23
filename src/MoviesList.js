@@ -19,8 +19,8 @@ export function MoviesList() {
   };
   useEffect(getMovies, []);
 
-  const deleteMovie = (name) => {
-    fetch(`${API}/movies/${name}`, {
+  const deleteMovie = (_id) => {
+    fetch(`${API}/movies/${_id}`, {
       method: "DELETE",
     })
       .then((data) => data.json())
@@ -37,7 +37,7 @@ export function MoviesList() {
               sx={{ marginLeft: "auto" }}
               aria-label="delete"
               color="error"
-              onClick={() => deleteMovie(name)}
+              onClick={() => deleteMovie(_id)}
             >
               <DeleteIcon />
             </IconButton>
@@ -46,7 +46,7 @@ export function MoviesList() {
             <IconButton
               color="secondary"
               aria-label="edit-movie"
-              onClick={() => history.push(`/movie/edit/${name}`)}
+              onClick={() => history.push(`/movie/edit/${_id}`)}
             >
               <EditIcon />
             </IconButton>

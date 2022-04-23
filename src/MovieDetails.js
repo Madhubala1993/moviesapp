@@ -17,7 +17,8 @@ export function MovieDetails() {
 
   const { id } = useParams();
   const history = useHistory();
-
+  console.log(movie);
+  console.log(movie.trailer);
   return (
     <div className="movie-details">
       <iframe width="100%" height="500px" src={movie.trailer}></iframe>
